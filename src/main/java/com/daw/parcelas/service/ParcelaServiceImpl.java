@@ -2,9 +2,10 @@ package com.daw.parcelas.service;
 
 import com.daw.parcelas.model.Parcela;
 import com.daw.parcelas.repository.ParcelaRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ParcelaServiceImpl implements ParcelaService{
 
     private final ParcelaRepository parcelaRepository;
