@@ -1,8 +1,7 @@
-package com.daw.parcelas.modelo;
+package com.daw.parcelas.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
 
 @Entity
 @Getter
