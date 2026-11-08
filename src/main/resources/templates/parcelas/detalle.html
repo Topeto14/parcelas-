@@ -9,5 +9,36 @@
 </head>
 <body class="container mt-5">
 
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow p-4 border-0 bg-light">
+
+            <h2 class="text-center text-primary mb-4 pb-2 border-bottom" th:text="${parcela.nombre}">Nombre</h2>
+
+            <dl class="row fs-5 mb-4">
+
+                <dt class="col-5 text-end text-muted">Identificador:</dt>
+                <dd class="col-7 fw-bold" th:text="${parcela.id}"></dd>
+
+                <dt class="col-5 text-end text-muted">Ubicación:</dt>
+                <dd class="col-7 fw-bold" th:text="${parcela.ubicacion}"></dd>
+
+                <dt class="col-5 text-end text-muted">Superficie:</dt>
+                <dd class="col-7 fw-bold" th:text="${parcela.superficie + ' ha'}"></dd>
+
+                <dt class="col-5 text-end text-muted">Cultivo:</dt>
+                <dd class="col-7 fw-bold text-success" th:text="${parcela.tipoCultivo?.etiqueta}"></dd>
+
+            </dl>
+
+            <div class="text-center">
+                <a th:href="@{/parcelas}" class="btn btn-secondary px-4 w-100">Volver al listado</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
