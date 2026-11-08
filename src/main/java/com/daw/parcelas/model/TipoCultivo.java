@@ -1,4 +1,4 @@
-package com.daw.parcelas.modelo;
+package com.daw.parcelas.model;
 
 public enum TipoCultivo {
     OLIVAR("Olivar"),
