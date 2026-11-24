@@ -20,6 +20,7 @@ public class ParcelaController {
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("parcelas", parcelaService.listarTodas());
+        model.addAttribute("superficieTotal", parcelaService.superficieTotal());
         return "parcelas/lista";
     }
 
@@ -47,4 +48,6 @@ public class ParcelaController {
         parcelaService.eliminar(id);
         return "redirect:/parcelas";
     }
+
+
 }

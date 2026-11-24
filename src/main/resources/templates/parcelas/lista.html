@@ -38,6 +38,12 @@
     </tbody>
 </table>
 
+<p class="fw-bold">
+    Superficie total:
+    <span th:text="${superficieTotal}"></span>
+    ha
+</p>
+
 <div th:if="${parcelas.isEmpty()}" class="alert alert-warning text-center">
     No hay parcelas registradas en el sistema.
 </div>

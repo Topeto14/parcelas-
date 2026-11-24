@@ -35,4 +35,13 @@ public class ParcelaServiceImpl implements ParcelaService{
     public void eliminar(Long id) {
         parcelaRepository.deleteById(id);
     }
+
+    @Override
+    public double superficieTotal() {
+        return parcelaRepository.findAll()
+                .stream()
+                .mapToDouble(p -> p.getSuperficie())
+                .sum();
+    }
+
 }

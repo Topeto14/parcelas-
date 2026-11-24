@@ -7,4 +7,5 @@ public interface ParcelaService {
     Parcela buscarPorId(Long id);
     Parcela guardar(Parcela parcela);
     void eliminar(Long id);
+    double superficieTotal();
 }
