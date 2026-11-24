@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface ParcelaRepository extends JpaRepository<Parcela, Long> {
     List<Parcela> findByTipoCultivo(TipoCultivo tipoCultivo);
+
+    List<Parcela> findAllByOrderByNombreAsc();
 }
