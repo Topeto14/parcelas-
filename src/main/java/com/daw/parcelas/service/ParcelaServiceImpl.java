@@ -17,7 +17,8 @@ public class ParcelaServiceImpl implements ParcelaService{
 
     @Override
     public List<Parcela> listarTodas() {
-        return parcelaRepository.findAll();
+
+        return parcelaRepository.findAllByOrderByNombreAsc();
     }
 
     @Override
@@ -45,9 +46,11 @@ public class ParcelaServiceImpl implements ParcelaService{
                 .sum();
     }
 
+
     @Override
     public List<Parcela> buscarPorTipoCultivo(TipoCultivo tipoCultivo) {
         return parcelaRepository.findByTipoCultivo(tipoCultivo);
     }
+
 
 }
