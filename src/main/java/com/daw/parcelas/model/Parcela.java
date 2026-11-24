@@ -17,7 +17,7 @@ public class Parcela {
     private Double superficie;
 
     @Enumerated(EnumType.STRING)
-    private TipoCultivo TipoCultivo;
+    private TipoCultivo tipoCultivo;
 
 
 
