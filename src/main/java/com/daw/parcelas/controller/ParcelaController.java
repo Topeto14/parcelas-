@@ -21,6 +21,7 @@ public class ParcelaController {
     public String listar(Model model) {
         model.addAttribute("parcelas", parcelaService.listarTodas());
         model.addAttribute("superficieTotal", parcelaService.superficieTotal());
+        model.addAttribute("tipos", TipoCultivo.values());
         return "parcelas/lista";
     }
 
@@ -49,5 +50,12 @@ public class ParcelaController {
         return "redirect:/parcelas";
     }
 
+    @GetMapping("/cultivo/{tipo}")
+    public String listarPorCultivo(@PathVariable TipoCultivo tipo, Model model) {
+        model.addAttribute("parcelas", parcelaService.buscarPorTipoCultivo(tipo));
+        model.addAttribute("superficieTotal", parcelaService.superficieTotal());
+        model.addAttribute("tipos", TipoCultivo.values());
+        return "parcelas/lista";
+    }
 
 }
