@@ -58,4 +58,10 @@ public class ParcelaController {
         return "parcelas/lista";
     }
 
+    @GetMapping("/{id}/editar")
+    public String editar(@PathVariable Long id, Model model) {
+        model.addAttribute("parcela", parcelaService.buscarPorId(id));
+        model.addAttribute("tipos", TipoCultivo.values());
+        return "parcelas/formulario";
+    }
 }

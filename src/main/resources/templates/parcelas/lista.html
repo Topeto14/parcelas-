@@ -42,6 +42,10 @@
         <td th:text="${p.superficie}"></td>
         <td th:text="${p.tipoCultivo?.etiqueta}"></td>
         <td>
+            <a th:href="@{/parcelas/{id}/editar(id=${p.id})}"
+               class="btn btn-warning btn-sm">
+                Editar
+            </a>
             <form th:action="@{/parcelas/{id}/eliminar(id=${p.id})}" method="post" onsubmit="return confirm('¿Seguro que quieres eliminar esta parcela?');" style="display:inline;">
                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
             </form>
