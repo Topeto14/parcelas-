@@ -9,7 +9,10 @@
 <body class="container mt-5">
 
 <div class="w-50 mx-auto">
-    <h1 class="mb-4">Nueva Parcela</h1>
+    <h1 class="mb-4"
+        th:text="${parcela.id == null ? 'Nueva parcela' : 'Editar parcela'}">
+        Parcela
+    </h1>
 
     <form th:action="@{/parcelas}" th:object="${parcela}" method="post" class="card p-4 shadow-sm">
 
