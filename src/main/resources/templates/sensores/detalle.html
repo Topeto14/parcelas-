@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragmentos/base :: pagina(~{::title}, 'sensores', ~{::section})}">
+<head>
+    <title>Detalle del sensor · AgroTech</title>
+</head>
+<body>
+
+<section th:object="${sensor}">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a th:href="@{/sensores}">Sensores</a>
+            </li>
+            <li class="breadcrumb-item active"
+                aria-current="page"
+                th:text="*{name}">
+                Sensor
+            </li>
+        </ol>
+    </nav>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h3 mb-0" th:text="*{name}">Sensor</h1>
+
+                <span class="badge text-bg-success"
+                      th:text="*{tipo}">
+                    Tipo
+                </span>
+            </div>
+
+            <dl class="row">
+                <dt class="col-sm-4">Identificador</dt>
+                <dd class="col-sm-8" th:text="*{id}"></dd>
+
+                <dt class="col-sm-4">Modelo</dt>
+                <dd class="col-sm-8" th:text="*{model}"></dd>
+
+                <dt class="col-sm-4">Unidad de medida</dt>
+                <dd class="col-sm-8"
+                    th:text="*{unidadMedida ?: 'Sin indicar'}"></dd>
+
+                <dt class="col-sm-4">Estado</dt>
+                <dd class="col-sm-8"
+                    th:text="*{estado ?: 'Sin indicar'}"></dd>
+
+                <dt class="col-sm-4">Latitud</dt>
+                <dd class="col-sm-8"
+                    th:text="*{latitud != null
+                        ? #numbers.formatDecimal(latitud, 1, 'POINT', 6, 'COMMA')
+                        : 'Sin indicar'}"></dd>
+
+                <dt class="col-sm-4">Longitud</dt>
+                <dd class="col-sm-8"
+                    th:text="*{longitud != null
+                        ? #numbers.formatDecimal(longitud, 1, 'POINT', 6, 'COMMA')
+                        : 'Sin indicar'}"></dd>
+
+                <dt class="col-sm-4">Creado</dt>
+                <dd class="col-sm-8"
+                    th:text="*{creadoEn != null
+                        ? #temporals.format(creadoEn, 'dd/MM/yyyy HH:mm')
+                        : 'Sin indicar'}"></dd>
+
+                <dt class="col-sm-4">Última actualización</dt>
+                <dd class="col-sm-8"
+                    th:text="*{actualizadoEn != null
+                        ? #temporals.format(actualizadoEn, 'dd/MM/yyyy HH:mm')
+                        : 'Sin indicar'}"></dd>
+            </dl>
+
+            <div class="d-flex gap-2">
+                <a th:href="@{/sensores}" class="btn btn-secondary">
+                    Volver
+                </a>
+
+                <a th:href="@{/sensores/{id}/editar(id=*{id})}"
+                   class="btn btn-primary">
+                    Editar
+                </a>
+
+                <button th:replace="~{fragmentos/comunes :: botonEliminar(
+                    @{/sensores/{id}/eliminar(id=${sensor.id})},
+                    ${sensor.name})}">
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

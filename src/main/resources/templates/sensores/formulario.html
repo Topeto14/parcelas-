@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragmentos/base :: pagina(~{::title}, 'sensores', ~{::section})}">
+<head>
+    <title>Formulario de sensor · AgroTech</title>
+</head>
+<body>
+
+<section th:with="esNuevo=${sensor.id == null}">
+
+    <h1 class="mb-4"
+        th:text="${esNuevo} ? 'Nuevo sensor' : 'Editar sensor'">
+        Sensor
+    </h1>
+
+    <form th:action="${esNuevo}
+              ? @{/sensores}
+              : @{/sensores/{id}(id=${sensor.id})}"
+          th:object="${sensor}"
+          method="post"
+          class="card card-body shadow-sm">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text"
+                   id="name"
+                   class="form-control"
+                   th:field="*{name}"
+                   th:errorclass="is-invalid"
+                   required>
+
+            <div class="invalid-feedback"
+                 th:errors="*{name}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="model" class="form-label">Modelo</label>
+            <input type="text"
+                   id="model"
+                   class="form-control"
+                   th:field="*{model}"
+                   th:errorclass="is-invalid"
+                   required>
+
+            <div class="invalid-feedback"
+                 th:errors="*{model}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo de sensor</label>
+            <select id="tipo"
+                    class="form-select"
+                    th:field="*{tipo}"
+                    th:errorclass="is-invalid"
+                    required>
+
+                <option value="">Selecciona un tipo</option>
+
+                <option th:each="t : ${tipos}"
+                        th:value="${t}"
+                        th:text="${t}">
+                </option>
+            </select>
+
+            <div class="invalid-feedback"
+                 th:errors="*{tipo}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="unidadMedida" class="form-label">
+                Unidad de medida
+            </label>
+            <input type="text"
+                   id="unidadMedida"
+                   class="form-control"
+                   th:field="*{unidadMedida}"
+                   placeholder="Por ejemplo: °C o %">
+        </div>
+
+        <div class="mb-3">
+            <label for="estado" class="form-label">Estado</label>
+            <input type="text"
+                   id="estado"
+                   class="form-control"
+                   th:field="*{estado}"
+                   th:errorclass="is-invalid"
+                   required>
+
+            <div class="invalid-feedback"
+                 th:errors="*{estado}"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="latitud" class="form-label">Latitud</label>
+                <input type="number"
+                       id="latitud"
+                       class="form-control"
+                       th:field="*{latitud}"
+                       th:errorclass="is-invalid"
+                       step="any">
+
+                <div class="invalid-feedback"
+                     th:errors="*{latitud}"></div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="longitud" class="form-label">Longitud</label>
+                <input type="number"
+                       id="longitud"
+                       class="form-control"
+                       th:field="*{longitud}"
+                       th:errorclass="is-invalid"
+                       step="any">
+
+                <div class="invalid-feedback"
+                     th:errors="*{longitud}"></div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-3">
+            <a th:href="${esNuevo}
+                       ? @{/sensores}
+                       : @{/sensores/{id}(id=${sensor.id})}"
+               class="btn btn-outline-secondary">
+                Cancelar
+            </a>
+
+            <button type="submit" class="btn btn-success">
+                Guardar
+            </button>
+        </div>
+
+    </form>
+</section>
+
+</body>
+</html>
