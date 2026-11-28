@@ -3,9 +3,9 @@ spring:
     name: parcelas
 
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url:  jdbc:mariadb://localhost:3306/agrot
+    username: root
+    password: root
 
   jpa:
     hibernate:
@@ -16,4 +16,4 @@ spring:
         format_sql: true
 
 server:
-  port: ${APP_PORT:8081}
+  port: ${APP_PORT:8080}
